@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.bertvanbrakel</groupId>
+        <artifactId>bertvanbrakel-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.bertvanbrakel</groupId>
+    <artifactId>bertvanbrakel-objects</artifactId>
+    <packaging>jar</packaging>
+    <name>com.bertvanbrakel - Objects OrientDB</name>
+    <description>play with orientDB</description>
+    <properties>
+        <orient.version>1.0rc9-SNAPSHOT</orient.version>
+    </properties>
+    <repositories>
+        <repository>
+            <id>orientechnologies-repository</id>
+            <name>Orient Technologies Maven2 Repository</name>
+            <url>http://www.orientechnologies.com/listing/m2</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.orientechnologies</groupId>
+            <artifactId>orient-commons</artifactId>
+            <version>${orient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.orientechnologies</groupId>
+            <artifactId>orientdb-core</artifactId>
+            <version>${orient.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.orientechnologies</groupId>-->
+<!--            <artifactId>orientdb-graphdb</artifactId>-->
+<!--            <version>${orient.version}</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.orientechnologies</groupId>
+            <artifactId>orientdb-enterprise</artifactId>
+            <version>${orient.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.orientechnologies</groupId>-->
+<!--            <artifactId>orientdb-server</artifactId>-->
+<!--            <version>${orient.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.orientechnologies</groupId>-->
+<!--            <artifactId>orientdb-client</artifactId>-->
+<!--            <version>${orient.version}</version>-->
+<!--        </dependency>-->
+
+<!-- Tinkperpop Blueprints -->
+<!--        <dependency>-->
+<!--            <groupId>com.tinkerpop</groupId>-->
+<!--            <artifactId>blueprints</artifactId>-->
+<!--            <version>1.2</version>-->
+<!--        </dependency>-->
+
+<!--         <dependency>  -->
+<!--             <groupId>com.tinkerpop</groupId>  -->
+<!--             <artifactId>blueprints-orient-graph</artifactId>  -->
+<!--             <version>1.2</version>  -->
+<!--            <type>pom</type> -->
+<!--         </dependency> -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r09</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bertvanbrakel</groupId>
+            <artifactId>bertvanbrakel-lang</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit-addons</groupId>
+            <artifactId>junit-addons</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
+        </dependency>
+    </dependencies>
+</project>
