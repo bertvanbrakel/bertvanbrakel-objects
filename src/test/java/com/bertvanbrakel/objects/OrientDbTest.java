@@ -1,5 +1,6 @@
 package com.bertvanbrakel.objects;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.Collection;
@@ -19,11 +20,97 @@ public class OrientDbTest {
 
         final OGraphDatabase db = Orient.instance().getDatabaseFactory().createGraphDatabase("local:/tmp/orientdb_test" + System.currentTimeMillis());
         db.create();
-        db.begin();
+       // db.begin();
 
-        db.commit();
+        Person p = Person.newBuilder()
+        	.setFirstName("my first name")
+        	.setLastName("my last name")
+        	.build();
+        
+        p.toDocument().save();
+        
+        
+        ORecordIteratorClass<ODocument> people = db.browseClass("Person");
+        for( ODocument doc:people){
+        	Person person = Person.newFromDocument(doc);
+        	
+        }
+        //db.commit();
         db.close();
 
+    }
+    
+    private static class Person2 {
+    	public final Option<String> firstName;
+    	public final Option<String> lastName;
+    	
+    	private Person2(Option<String> firstName, Option<String> lastName) {
+			super();
+			this.firstName = checkNotNull(firstName,"expect lastName");
+			this.lastName = checkNotNull(lastName,"expect lastName");
+		}
+    }
+    
+    private static class Person {
+    	
+    	private final String firstName;
+    	private final String lastName;
+    	
+    	public static Builder newBuilder(){
+    		return new Builder();
+    	}
+    	
+    	private Person(String firstName, String lastName) {
+			super();
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+
+    	public static Person newFromDocument(ODocument doc){
+    		return new Person(
+    			(String)doc.field("fname", String.class)
+    			, (String)doc.field("lname", String.class)
+    		);
+    	}
+
+		public ODocument toDocument() {
+			ODocument doc = new ODocument("Person");
+			mergeDocument(doc);
+			return doc;
+		}
+
+		public ODocument mergeDocument(ODocument doc) {
+			doc.field("fname", firstName);
+			doc.field("lname", lastName);
+			return doc;
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public static class Builder {
+			private String firstName;
+	    	private String lastName;
+	    
+	    	public Person build(){
+	    		return new Person(firstName,lastName);
+	    	}
+	    	
+			public Builder setFirstName(String firstName) {
+				this.firstName = firstName;
+				return this;
+			}
+			
+			public Builder setLastName(String lastName) {
+				this.lastName = lastName;
+				return this;
+			}	
+    	}
     }
 
     @Test
@@ -32,8 +119,8 @@ public class OrientDbTest {
             final ODatabaseDocumentTx db = new ODatabaseDocumentTx("local:/tmp/orientdb_databases/petshop" + System.currentTimeMillis());
             db.create();
             new ODocument("Person").save();
-            final int NUM = 100000;
-            final int NUM_FIELDS = 20;
+            final int NUM = 100;//100000;
+            final int NUM_FIELDS = 10;//20;
             
             try {
                 //db.getMetadata().getSchema().createClass( "ORIDs" );
@@ -113,7 +200,7 @@ public class OrientDbTest {
     public void play2_relationships() throws Exception {
         final ODatabaseDocumentTx db = new ODatabaseDocumentTx("local:/tmp/orientdb_databases/petshop" + System.currentTimeMillis());
         db.create();
-        final int NUM = 100000;
+        final int NUM = 100;//100000;
         try {
             //db.getMetadata().getSchema().createClass( "ORIDs" );
           //  db.begin(TXTYPE.OPTIMISTIC);

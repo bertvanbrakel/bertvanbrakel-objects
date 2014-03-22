@@ -6,6 +6,7 @@
         <groupId>com.bertvanbrakel</groupId>
         <artifactId>bertvanbrakel-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../bertvanbrakel-parent/pom.xml</relativePath>
     </parent>
     <groupId>com.bertvanbrakel</groupId>
     <artifactId>bertvanbrakel-objects</artifactId>
@@ -13,9 +14,9 @@
     <name>com.bertvanbrakel - Objects OrientDB</name>
     <description>play with orientDB</description>
     <properties>
-        <orient.version>1.0rc9-SNAPSHOT</orient.version>
+        <orient.version>1.0</orient.version>
     </properties>
-    <repositories>
+   <!-- <repositories>
         <repository>
             <id>orientechnologies-repository</id>
             <name>Orient Technologies Maven2 Repository</name>
@@ -26,6 +27,7 @@
             </snapshots>
         </repository>
     </repositories>
+-->
     <dependencies>
         <dependency>
             <groupId>com.orientechnologies</groupId>
@@ -77,8 +79,8 @@
             <version>r09</version>
         </dependency>
         <dependency>
-            <groupId>com.bertvanbrakel</groupId>
-            <artifactId>bertvanbrakel-lang</artifactId>
+            <groupId>org.codemucker</groupId>
+            <artifactId>codemucker-lang</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
